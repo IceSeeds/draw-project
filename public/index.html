@@ -3,13 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>SocketIO チャットテスト</title>
-    <style>
-      #inputmyname{display:none}
-      #chat{display:none}
-      #msglist{list-style-type:none; padding-left:1px;}
-      .msg-me{color:blue}
-      .name {font-weight:bold}
-    </style>
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
   </head>
   <body>
     <h1>SocketIOチャット</h1>
@@ -34,8 +28,19 @@
         <span id=myname></span>&nbsp;<input type="text" id="msg">
         <button>送信</button>
       </form>
-      <!-- 発言ログ -->
-      <ul id="msglist"></ul>
+
+      <section id="chat-main">
+        <!-- 発言ログ -->
+        <ul id="msglist"></ul>
+
+        <!-- メンバー一覧 -->
+        <ul id="memberlist"></ul>
+      </section>
+
+      <!-- ログアウト -->
+      <form id="frm-quit">
+        <button>退出する</button>
+      </form>
     </section>
 
     <!--<script src="/socket.io/socket.io.js"></script>-->
