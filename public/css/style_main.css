@@ -1,0 +1,117 @@
+@charset="utf-8";
+
+body {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  background-color: #ccc;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1440px;
+  min-width: 1000px;
+  margin: 0 auto;
+}
+
+#myCanvas {
+  background: #ba9dfc;
+/*  margin: 2%;*/
+/*  box-sizing: border-box;*/
+}
+/* flex
+--------------------------------------------------*/
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* canvas_wrap
+--------------------------------------------------*/
+.canvas_wrap {
+  width: 80%;
+/*  height: 450px;*/
+  background: #35fd54;
+  position: relative;
+}
+
+/* right_wrap
+--------------------------------------------------*/
+.right_wrap {
+  width: 20%;
+}
+
+/* count_wrap
+--------------------------------------------------*/
+.count_wrap {
+  background: tomato;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sheet {
+  background: pink;
+}
+
+.second {
+  background: #ccc;
+}
+
+/* chat
+--------------------------------------------------*/
+.chat {
+  background: #fcc;
+  height: 400px;
+}
+
+/* buttn
+--------------------------------------------------*/
+.start p {
+  background: tomato;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+.exit p {
+  background: pink;
+  height: 50px;
+  text-align: center;
+   line-height: 50px;
+}
+
+/* user_wrap
+--------------------------------------------------*/
+.user_wrap {
+  background: #ec0aff;
+  width: 80%;
+  height: 150px;
+  position: absolute;
+  top: 450px;
+  left: 0;
+}
+
+.icon {
+  background: yellow;
+  width: 20%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.name {
+  background: #ccc;
+  width: 20%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.point {
+  background: tomato;
+  width: 20%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

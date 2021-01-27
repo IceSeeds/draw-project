@@ -1,7 +1,7 @@
 const crypto = require( "crypto" );
 const app    = require( "express" )();
 const http   = require( "http" ).createServer( app );
-const io     = require( "socket.io" )( http );
+const io     = require( "socket.io" )( http ); // require末尾の(http)は、先ほど作成したサーバーと紐付けるという意味
 
 //HTML, js などのフォルダ
 const DOCUMENT_ROOT = __dirname + "/public";
@@ -40,7 +40,16 @@ app.get( "/", ( req, res ) => {
 app.get( "/:file", ( req, res ) => {
   res.sendFile( DOCUMENT_ROOT + "/" + req.params.file );
 } );
+//post通信
+app.post( "/main", ( req, res ) => {
+  res.sendFile( DOCUMENT_ROOT + "/main.html" );
+} );
 
+/*
+io.on() ... フロント側と接続されているかを確認 ( つまり、init関数 )
+            第1引数に「connection」を設定することで、接続されているかどうかを確認
+socket ...  ユーザー情報も含めて送信されたメッセージが格納されています
+*/
 // ユーザが接続
 io.on( "connection", ( socket ) => {
   console.log( "ユーザが接続しました。" );
@@ -75,6 +84,7 @@ io.on( "connection", ( socket ) => {
 
       //入室通知
       io.to( socket.id ).emit( "member-join", data );
+      //送信元以外の全クライアントに送信
       socket.broadcast.emit( "member-join", {
         name: data.name,
         token:MEMBER[socket.id].count
@@ -101,7 +111,7 @@ io.on( "connection", ( socket ) => {
     }
   } );
 
-  //退出
+  //退出 //quitが関数名みたいな。app.jsとの繋がり
   socket.on( "quit", ( data ) => {
     //トークンが正しければ
     if( authToken( socket.id, data.token ) )
@@ -119,6 +129,10 @@ io.on( "connection", ( socket ) => {
       //本人以外に通知
       io.to( socket.id ).emit( "quit-result", {status: false});
     }
+  } );
+
+  socket.on( "change", ( data ) => {
+    console.log( data.name );
   } );
 
 } );
